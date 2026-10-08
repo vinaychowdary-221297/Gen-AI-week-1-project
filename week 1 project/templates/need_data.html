@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ page }} · CSV Studio{% endblock %}
+{% block content %}
+<h1>{{ page }}</h1>
+<p class="lede">Load a CSV or a sample first. This page uses that file.</p>
+<p><a class="button" href="{{ url_for('load_page') }}">Go to Load</a></p>
+{% endblock %}

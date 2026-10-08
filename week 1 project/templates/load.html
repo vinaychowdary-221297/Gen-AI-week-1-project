@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Load · CSV Studio{% endblock %}
+{% block content %}
+<h1>Load</h1>
+<p class="lede">Start from a sample, or upload a CSV with a header row. Roles are guessed from the values. Change a role or a name if a column is misread.</p>
+<div class="samples">
+  <article class="card">
+    <h2>Upload</h2>
+    <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+      <label for="csv-load">CSV file</label>
+      <input id="csv-load" type="file" name="csv" accept=".csv,text/csv" required>
+      <p><button type="submit">Upload</button></p>
+    </form>
+  </article>
+  <article class="card">
+    <h2>Inventory sample</h2>
+    <form method="post" action="{{ url_for('use_sample', kind='inventory') }}">
+      <button type="submit">Use inventory sample</button>
+    </form>
+  </article>
+  <article class="card">
+    <h2>Portfolio sample</h2>
+    <form method="post" action="{{ url_for('use_sample', kind='portfolio') }}">
+      <button type="submit" class="secondary">Use portfolio sample</button>
+    </form>
+  </article>
+</div>
+{% if data %}
+  <section class="panel">
+    <h2>{{ data.source }}</h2>
+    {% if data.raw|length > 250000 %}
+      <p class="note">This file has {{ "{:,}".format(data.raw|length) }} rows. Filters and charts may take a few seconds.</p>
+    {% endif %}
+    <div class="kpis">
+      {% for label, value in quality %}
+        <div class="kpi"><span>{{ label }}</span><strong>{{ value }}</strong></div>
+      {% endfor %}
+    </div>
+    <div class="table-wrap">{{ raw_table|safe }}</div>
+  </section>
+  <section class="panel">
+    <h2>Columns</h2>
+    <form method="post" action="{{ url_for('update_columns') }}">
+      <div class="table-wrap">
+        <table class="grid editor">
+          <thead>
+            <tr>
+              <th>Column</th>
+              <th>Name in the site</th>
+              <th>Role</th>
+              <th>Missing</th>
+              <th>Distinct</th>
+              <th>Example</th>
+              <th>Leave out</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in columns %}
+              <tr>
+                <td>{{ row.column }}</td>
+                <td><input type="text" name="use_name_{{ loop.index0 }}" value="{{ row.use_name }}" aria-label="Name for {{ row.column }}"></td>
+                <td>
+                  <select name="role_{{ loop.index0 }}" aria-label="Role for {{ row.column }}">
+                    {% for role in roles %}
+                      <option value="{{ role }}" {% if row.role == role %}selected{% endif %}>{{ role }}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+                <td>{{ row.missing }}</td>
+                <td>{{ row.distinct }}</td>
+                <td>{{ row.example }}</td>
+                <td><input type="checkbox" name="exclude" value="{{ row.column }}" {% if row.column in excluded %}checked{% endif %} aria-label="Leave out {{ row.column }}"></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p><button type="submit">Save columns</button></p>
+    </form>
+    {% if prepared_note %}
+      <p class="note">{{ prepared_note }}</p>
+    {% endif %}
+    {% if prepared_table %}
+      <div class="table-wrap">{{ prepared_table|safe }}</div>
+    {% endif %}
+  </section>
+{% endif %}
+{% endblock %}

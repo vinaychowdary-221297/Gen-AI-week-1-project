@@ -1,0 +1,34 @@
+ticker,name,sector,shares,price,cost_basis,as_of
+AAPL,Apple,Technology,40,178.00,142.00,2026-01-31
+MSFT,Microsoft,Technology,22,402.00,280.00,2026-01-31
+JPM,JPMorgan Chase,Financials,35,188.50,145.00,2026-01-31
+JNJ,Johnson and Johnson,Healthcare,28,158.20,160.00,2026-01-31
+XOM,Exxon Mobil,Energy,45,104.00,78.00,2026-01-31
+KO,Coca-Cola,Consumer,50,59.80,54.00,2026-01-31
+CAT,Caterpillar,Industrials,16,318.00,210.00,2026-01-31
+NEE,NextEra Energy,,40,69.40,64.50,2026-01-31
+AAPL,Apple,Technology,40,184.50,142.00,2026-02-28
+MSFT,Microsoft,Technology,22,410.25,280.00,2026-02-28
+JPM,JPMorgan Chase,Financials,35,194.10,145.00,2026-02-28
+JNJ,Johnson and Johnson,Healthcare,28,155.00,160.00,2026-02-28
+XOM,Exxon Mobil,Energy,45,109.30,78.00,2026-02-28
+KO,Coca-Cola,Consumer,50,61.10,54.00,2026-02-28
+CAT,Caterpillar,Industrials,16,332.40,210.00,2026-02-28
+NEE,NextEra Energy,,40,71.20,64.50,2026-02-28
+AAPL,Apple,Technology,40,190.75,142.00,2026-03-31
+MSFT,Microsoft,Technology,22,428.00,280.00,2026-03-31
+JPM,JPMorgan Chase,Financials,35,201.40,145.00,2026-03-31
+JNJ,Johnson and Johnson,Healthcare,28,157.60,160.00,2026-03-31
+XOM,Exxon Mobil,Energy,45,114.80,78.00,2026-03-31
+KO,Coca-Cola,Consumer,50,62.40,54.00,2026-03-31
+CAT,Caterpillar,Industrials,16,345.10,210.00,2026-03-31
+NEE,NextEra Energy,,40,73.00,64.50,2026-03-31
+AAPL,Apple,Technology,40,188.10,142.00,2026-04-30
+MSFT,Microsoft,Technology,22,421.50,280.00,2026-04-30
+JPM,JPMorgan Chase,Financials,35,206.20,145.00,2026-04-30
+JNJ,Johnson and Johnson,Healthcare,28,152.30,160.00,2026-04-30
+XOM,Exxon Mobil,Energy,45,118.40,78.00,2026-04-30
+KO,Coca-Cola,Consumer,50,61.70,54.00,2026-04-30
+CAT,Caterpillar,Industrials,16,339.00,,2026-04-30
+NEE,NextEra Energy,,40,72.10,64.50,2026-04-30
+AAPL,Apple,Technology,40,178.00,142.00,2026-01-31

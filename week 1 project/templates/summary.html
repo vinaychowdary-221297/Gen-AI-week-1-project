@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Summary · CSV Studio{% endblock %}
+{% block content %}
+<h1>Summary</h1>
+<p class="note">{{ filter_note }}</p>
+<div class="kpis">
+  {% for label, value in snapshot %}
+    <div class="kpi"><span>{{ label }}</span><strong>{{ value }}</strong></div>
+  {% endfor %}
+</div>
+<section class="panel">
+  <h2>Overview</h2>
+  <p>{{ overview }}</p>
+</section>
+{% if highlights or health %}
+  <section class="split">
+    <article class="panel">
+      <h2>What stands out</h2>
+      <ul class="plain">{% for line in highlights %}<li>{{ line }}</li>{% endfor %}</ul>
+    </article>
+    <article class="panel">
+      <h2>Data health</h2>
+      <ul class="plain">{% for line in health %}<li>{{ line }}</li>{% endfor %}</ul>
+    </article>
+  </section>
+{% endif %}
+{% if top_table or outlier_table %}
+  <section class="split">
+    {% if top_table %}
+      <article class="panel">
+        <h2>Largest groups</h2>
+        <div class="table-wrap">{{ top_table|safe }}</div>
+      </article>
+    {% endif %}
+    {% if outlier_table %}
+      <article class="panel">
+        <h2>Outlier rows</h2>
+        <div class="table-wrap">{{ outlier_table|safe }}</div>
+      </article>
+    {% endif %}
+  </section>
+{% endif %}
+{% if relationships %}
+  <section class="panel">
+    <h2>Relationships</h2>
+    <ul class="plain">{% for line in relationships %}<li>{{ line }}</li>{% endfor %}</ul>
+    {% if corr_table %}<div class="table-wrap">{{ corr_table|safe }}</div>{% endif %}
+  </section>
+{% endif %}
+{% if missing_table %}
+  <section class="panel">
+    <h2>Missing values</h2>
+    <div class="table-wrap">{{ missing_table|safe }}</div>
+  </section>
+{% endif %}
+{% if numeric_profile %}
+  <details class="panel">
+    <summary>Numeric profile</summary>
+    <div class="table-wrap">{{ numeric_profile|safe }}</div>
+  </details>
+{% endif %}
+{% if category_profile %}
+  <details class="panel">
+    <summary>Category profile</summary>
+    <div class="table-wrap">{{ category_profile|safe }}</div>
+  </details>
+{% endif %}
+{% if next_looks %}
+  <section class="panel">
+    <h2>Suggested next look</h2>
+    <ul class="plain">{% for line in next_looks %}<li>{{ line }}</li>{% endfor %}</ul>
+    <p><a href="{{ url_for('dashboard') }}?{{ query_string }}">Back to this dashboard view</a></p>
+  </section>
+{% endif %}
+{% endblock %}

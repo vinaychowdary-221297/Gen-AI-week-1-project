@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}CSV Studio{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="kicker">A local website for any CSV</p>
+  <h1>Look at a table the way you would read a site.</h1>
+  <p class="lede">Load an inventory file, a portfolio, or any other CSV. The next pages give you a dashboard and a written summary.</p>
+</section>
+{% if has_data %}
+  <p class="banner">Current file: {{ source }}. <a href="{{ url_for('dashboard') }}">Open the dashboard</a> or <a href="{{ url_for('summary_page') }}">read the summary</a>.</p>
+{% endif %}
+<section class="cards">
+  <article class="card">
+    <h2>Load</h2>
+    <p>Bring in a CSV, check what each column means, and leave out anything you do not want in the charts.</p>
+    <a href="{{ url_for('load_page') }}">Go to Load</a>
+  </article>
+  <article class="card">
+    <h2>Dashboard</h2>
+    <p>Filter the rows, then look at a trend, a breakdown, a distribution, and a scatter plot.</p>
+    <a href="{{ url_for('dashboard') }}">Go to Dashboard</a>
+  </article>
+  <article class="card">
+    <h2>Summary</h2>
+    <p>Read the totals, the odd rows, the gaps in the file, and how the number columns move together.</p>
+    <a href="{{ url_for('summary_page') }}">Go to Summary</a>
+  </article>
+</section>
+<section>
+  <h2>Start with a sample or your own file</h2>
+  <div class="samples">
+    <article class="card">
+      <h3>Your CSV</h3>
+      <p>Use a header row. Comma, tab, and similar delimiters are detected.</p>
+      <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+        <label for="csv">CSV file</label>
+        <input id="csv" type="file" name="csv" accept=".csv,text/csv" required>
+        <p><button type="submit">Upload</button></p>
+      </form>
+    </article>
+    <article class="card">
+      <h3>Inventory</h3>
+      <p>Products, quantities, prices, and warehouses.</p>
+      <form method="post" action="{{ url_for('use_sample', kind='inventory') }}">
+        <button type="submit">Open inventory sample</button>
+      </form>
+    </article>
+    <article class="card">
+      <h3>Portfolio</h3>
+      <p>Tickers, shares, prices, and sectors over four months.</p>
+      <form method="post" action="{{ url_for('use_sample', kind='portfolio') }}">
+        <button type="submit" class="secondary">Open portfolio sample</button>
+      </form>
+    </article>
+  </div>
+</section>
+{% endblock %}

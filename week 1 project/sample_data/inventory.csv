@@ -1,0 +1,42 @@
+product,sku,category,quantity,unit_price,warehouse,last_restock
+Stoneware Mug,MG-104,Home,120,8.50,East,2026-01-06
+Linen Throw,HM-220,Home,48,34.00,East,2026-01-12
+Oak Cutting Board,HM-221,Home,36,22.00,West,2026-01-18
+Scented Candle Set,HM-305,Home,80,15.75,Central,2026-02-02
+Desk Lamp,EL-010,Electronics,42,27.50,East,2026-01-09
+USB-C Cable 2m,EL-014,Electronics,210,9.25,East,2026-01-15
+Wireless Mouse,EL-033,Electronics,64,18.40,West,2026-02-11
+Bluetooth Speaker,EL-040,Electronics,28,45.00,Central,2026-02-20
+Noise Cancelling Headphones,EL-051,Electronics,16,79.00,West,2026-03-01
+Portable Charger,EL-058,Electronics,90,24.00,East,2026-03-14
+Cotton T-Shirt,AP-101,Apparel,150,12.00,East,2026-01-22
+Wool Beanie,AP-118,Apparel,70,16.50,Central,2026-02-05
+Running Shoes,AP-130,Apparel,24,68.00,West,2026-02-17
+Denim Jacket,AP-144,Apparel,18,54.00,East,2026-03-08
+Trail Socks 3-Pack,AP-155,Apparel,96,11.00,Central,2026-03-21
+Olive Oil 1L,GR-010,Grocery,200,7.40,East,2026-01-08
+Coffee Beans 1kg,GR-022,Grocery,140,13.20,West,2026-01-28
+Sparkling Water 12pk,GR-030,Grocery,180,6.10,Central,2026-02-09
+Dark Chocolate Bar,GR-041,Grocery,260,3.25,East,2026-02-19
+Rolled Oats 2kg,GR-055,Grocery,110,5.80,West,2026-03-12
+Cast Iron Skillet,HM-410,Home,20,39.00,West,2026-03-25
+Bath Towel Set,HM-418,Home,55,24.50,East,2026-04-02
+Wall Clock,HM-430,Home,30,19.00,Central,2026-04-16
+LED Monitor 27in,EL-070,Electronics,12,189.00,East,2026-04-04
+Mechanical Keyboard,EL-077,Electronics,22,72.00,West,2026-04-18
+Webcam HD,EL-082,Electronics,38,31.00,Central,2026-05-01
+Hoodie,AP-170,Apparel,44,36.00,West,2026-04-09
+Linen Shirt,AP-182,Apparel,33,29.00,East,2026-04-27
+Rain Jacket,AP-190,Apparel,15,62.00,Central,2026-05-08
+Herbal Tea 40ct,GR-070,Grocery,175,4.50,East,2026-04-11
+Almond Butter,GR-081,Grocery,85,8.90,West,2026-05-03
+Pasta Case,GR-090,Grocery,130,2.75,Central,2026-05-15
+Garden Shears,HM-502,Home,26,17.50,West,2026-05-20
+Throw Pillow,HM-510,Home,64,14.00,East,2026-06-02
+Bulk Packing Tape,HM-599,Home,5000,3.10,Central,2026-06-10
+Yoga Mat,AP-210,Apparel,40,21.00,East,2026-05-22
+Baseball Cap,AP-214,Apparel,88,13.50,West,2026-06-06
+Granola Box,GR-110,Grocery,,6.40,East,2026-06-14
+Honey Jar,GR-118,Grocery,72,9.10,,2026-06-18
+Sea Salt,GR-120,Grocery,98,3.80,,2026-06-22
+Stoneware Mug,MG-104,Home,120,8.50,East,2026-01-06

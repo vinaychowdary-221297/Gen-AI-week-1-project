@@ -1,0 +1,208 @@
+:root {
+  --ink: #1b2424;
+  --muted: #5c675f;
+  --line: #e4e0d6;
+  --paper: #f4f1ea;
+  --card: #ffffff;
+  --brand: #143d3d;
+  --accent: #0f6e6e;
+  --mark: #f4d35e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+a { color: var(--accent); }
+
+.site-header {
+  background: var(--brand);
+  color: #f6f7f4;
+}
+
+.site-header a { color: inherit; text-decoration: none; }
+
+.header-inner,
+.page,
+.site-footer .footer-inner {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+}
+
+.logo {
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: 1.35rem;
+}
+
+nav { display: flex; gap: 1.1rem; }
+
+nav a {
+  padding: 0.2rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+nav a[aria-current="page"] { border-bottom-color: var(--mark); }
+
+.current-file {
+  color: #d5e4e0;
+  font-size: 0.85rem;
+}
+
+.page { padding: 2rem 0 3rem; }
+
+h1, h2, h3 {
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.4rem; margin: 0 0 0.6rem; }
+
+.lede, .note { color: var(--muted); }
+
+.hero { padding: 1rem 0 0.5rem; }
+
+.kicker {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.button, button {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button.secondary, button.secondary { background: var(--brand); }
+
+.cards, .split, .kpis, .charts, .samples {
+  display: grid;
+  gap: 1rem;
+}
+
+.cards, .samples { grid-template-columns: repeat(3, 1fr); margin-top: 1.5rem; }
+
+.samples { grid-template-columns: 1.2fr 1fr 1fr; }
+
+.card, .panel, .kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+}
+
+.card h2, .card h3, .panel h2 { margin-top: 0; }
+
+.kpis { grid-template-columns: repeat(4, 1fr); margin: 1rem 0; }
+
+.kpi span { display: block; color: var(--muted); font-size: 0.8rem; }
+
+.kpi strong { font-size: 1.35rem; }
+
+.charts { grid-template-columns: 1fr 1fr; }
+
+.split { grid-template-columns: 1fr 1fr; }
+
+.panel { margin-top: 1rem; }
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+label { display: block; font-size: 0.82rem; margin-bottom: 0.25rem; }
+
+select, input[type="text"], input[type="date"], input[type="file"] {
+  width: 100%;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: white;
+  font: inherit;
+}
+
+.check-grid { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; }
+
+.check-grid label { margin: 0; font-size: 0.92rem; }
+
+.table-wrap { overflow-x: auto; }
+
+table.grid { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+
+table.grid th, table.grid td {
+  text-align: left;
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+table.grid th {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.editor input[type="text"], .editor select { min-width: 8rem; }
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 0 0 0.8rem;
+  background: white;
+}
+
+legend { padding: 0 0.35rem; font-weight: 600; }
+
+details summary { cursor: pointer; font-family: Georgia, "Palatino Linotype", serif; font-size: 1.2rem; }
+
+.flashes { padding-left: 1.1rem; color: #8a3d12; }
+
+.banner {
+  background: #e7f0ee;
+  border: 1px solid #c9dfdb;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer .footer-inner { padding: 1rem 0 1.4rem; }
+
+ul.plain { padding-left: 1.1rem; }
+
+@media (max-width: 800px) {
+  .cards, .samples, .kpis, .charts, .split, .fields { grid-template-columns: 1fr; }
+  .header-inner { flex-wrap: wrap; }
+  h1 { font-size: 2rem; }
+}

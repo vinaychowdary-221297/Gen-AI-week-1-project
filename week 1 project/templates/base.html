@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CSV Studio{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="{{ url_for('home') }}">CSV Studio</a>
+      <nav>
+        <a href="{{ url_for('home') }}" {% if endpoint == 'home' %}aria-current="page"{% endif %}>Home</a>
+        <a href="{{ url_for('load_page') }}" {% if endpoint == 'load_page' %}aria-current="page"{% endif %}>Load</a>
+        <a href="{{ url_for('dashboard') }}" {% if endpoint == 'dashboard' %}aria-current="page"{% endif %}>Dashboard</a>
+        <a href="{{ url_for('summary_page') }}" {% if endpoint == 'summary_page' %}aria-current="page"{% endif %}>Summary</a>
+      </nav>
+      {% if source %}<span class="current-file">{{ source }}</span>{% endif %}
+    </div>
+  </header>
+  <main class="page">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">This website runs on your computer. CSV files stay here.</div>
+  </footer>
+</body>
+</html>

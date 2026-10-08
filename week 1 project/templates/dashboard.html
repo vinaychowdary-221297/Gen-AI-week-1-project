@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · CSV Studio{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<p class="lede">{{ intro }}</p>
+<form method="get" action="{{ url_for('dashboard') }}">
+  <input type="hidden" name="ready" value="1">
+  <div class="fields">
+    {% if form.metrics %}
+      <div>
+        <label for="metric">Metric</label>
+        <select id="metric" name="metric">
+          {% for name in form.metrics %}
+            <option value="{{ name }}" {% if form.metric == name %}selected{% endif %}>{{ name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+    {% if form.groups %}
+      <div>
+        <label for="group">Group by</label>
+        <select id="group" name="group">
+          <option value="" {% if not form.group %}selected{% endif %}>None</option>
+          {% for name in form.groups %}
+            <option value="{{ name }}" {% if form.group == name %}selected{% endif %}>{{ name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+    {% if form.dates|length > 1 %}
+      <div>
+        <label for="date">Date</label>
+        <select id="date" name="date">
+          {% for name in form.dates %}
+            <option value="{{ name }}" {% if form.date == name %}selected{% endif %}>{{ name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+    {% for filt in form.filters %}
+      <div>
+        <label for="flt-{{ filt.index }}">{{ filt.name }}</label>
+        <select id="flt-{{ filt.index }}" name="flt_{{ filt.index }}">
+          <option value="" {% if not filt.selected %}selected{% endif %}>All</option>
+          {% for option in filt.options %}
+            <option value="{{ option }}" {% if filt.selected == option %}selected{% endif %}>{{ option }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endfor %}
+    {% if form.date_form and not form.date_form.single %}
+      <div>
+        <label for="start">From</label>
+        <input id="start" type="date" name="start" min="{{ form.date_form.min }}" max="{{ form.date_form.max }}" value="{{ form.date_form.start }}">
+      </div>
+      <div>
+        <label for="end">To</label>
+        <input id="end" type="date" name="end" min="{{ form.date_form.min }}" max="{{ form.date_form.max }}" value="{{ form.date_form.end }}">
+      </div>
+    {% endif %}
+  </div>
+  <p><button type="submit">Update view</button></p>
+</form>
+{% if empty %}
+  <p class="banner">These filters match no rows.</p>
+{% else %}
+  <div class="kpis">
+    {% for label, value in kpis %}
+      <div class="kpi"><span>{{ label }}</span><strong>{{ value }}</strong></div>
+    {% endfor %}
+  </div>
+  <script src="{{ url_for('plotly_js') }}"></script>
+  <section class="charts">
+    <article class="panel">
+      <h2>Trend</h2>
+      {% if trend_note %}<p class="note">{{ trend_note }}</p>{% endif %}
+      {% if trend %}{{ trend|safe }}{% else %}<p>{{ trend_empty }}</p>{% endif %}
+    </article>
+    <article class="panel">
+      <h2>Breakdown</h2>
+      {% if breakdown_note %}<p class="note">{{ breakdown_note }}</p>{% endif %}
+      {% if breakdown %}{{ breakdown|safe }}{% else %}<p>{{ breakdown_empty }}</p>{% endif %}
+    </article>
+  </section>
+  <section class="panel">
+    <h2>Filtered rows</h2>
+    {% if table_note %}<p class="note">{{ table_note }}</p>{% endif %}
+    <div class="table-wrap">{{ table|safe }}</div>
+    <p><a class="button" href="{{ url_for('download') }}?{{ query_string }}">Download filtered CSV</a>
+       <a class="button secondary" href="{{ url_for('summary_page') }}?{{ query_string }}">Read the summary of this view</a></p>
+  </section>
+{% endif %}
+{% endblock %}
